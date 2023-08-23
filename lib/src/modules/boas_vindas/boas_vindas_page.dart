@@ -10,11 +10,11 @@ class BoasVindasPage extends StatefulWidget {
 }
 
 class _BoasVindasPageState extends State<BoasVindasPage> {
-  late final AuthotorizationImpl auth;
+  late final Authotorization auth;
   @override
   void initState() {
     super.initState();
-    auth = GetIt.I.get<AuthotorizationImpl>();
+    auth = GetIt.I.get<Authotorization>();
     auth.logedIn().then((value) {
       if (value) {
         Navigator.pushReplacementNamed(context, '/home');

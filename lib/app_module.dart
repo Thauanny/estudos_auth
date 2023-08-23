@@ -1,6 +1,6 @@
-import 'package:aad_oauth/model/config.dart';
 import 'package:dio/dio.dart';
 import 'package:estudo_auth/src/shared/core/abstractions/auth/authorization.dart';
+import 'package:estudo_auth/src/shared/core/abstractions/auth/impl/authorization_impl.dart';
 import 'package:estudo_auth/src/shared/core/abstractions/local_storage/secure_storage.dart';
 import 'package:estudo_auth/src/shared/core/abstractions/local_storage/secure_storage_impl.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +40,7 @@ class AppModule extends StatefulWidget {
         ),
       ),
     );
-    GetIt.I.registerSingleton<AuthotorizationImpl>(
+    GetIt.I.registerSingleton<Authotorization>(
       AuthotorizationImpl(GetIt.I.get<SecureStorage>()),
     );
 

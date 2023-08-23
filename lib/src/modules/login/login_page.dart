@@ -11,7 +11,7 @@ class LoginPage extends StatelessWidget {
     final _formKey = GlobalKey<FormState>();
     final _emailController = TextEditingController();
     final _passwordController = TextEditingController();
-    final auth = GetIt.I.get<AuthotorizationImpl>();
+    final auth = GetIt.I.get<Authotorization>();
 
     return Scaffold(
       floatingActionButton: Padding(

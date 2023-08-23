@@ -14,12 +14,12 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends HomeModule<MyHomePage> {
   late final HomeRepository homeRepository;
-  late final AuthotorizationImpl auth;
+  late final Authotorization auth;
   @override
   void initState() {
     super.initState();
     homeRepository = GetIt.I.get<HomeRepository>();
-    auth = GetIt.I.get<AuthotorizationImpl>();
+    auth = GetIt.I.get<Authotorization>();
   }
 
   @override
