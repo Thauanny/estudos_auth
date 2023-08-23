@@ -1,3 +1,4 @@
+import 'package:aad_oauth/model/config.dart';
 import 'package:dio/dio.dart';
 import 'package:estudo_auth/src/shared/core/abstractions/auth/authorization.dart';
 import 'package:estudo_auth/src/shared/core/abstractions/local_storage/secure_storage.dart';
@@ -42,12 +43,16 @@ class AppModule extends StatefulWidget {
     GetIt.I.registerSingleton<AuthotorizationImpl>(
       AuthotorizationImpl(GetIt.I.get<SecureStorage>()),
     );
+
     GetIt.I.registerSingleton<ClientHttp>(
       ClienteHttpImpl(
         clienteHttp: Dio(),
         baseUrl: baseUrl,
         prefixo: prefixo,
       ),
+    );
+    GetIt.I.registerSingleton<GlobalKey<NavigatorState>>(
+      GlobalKey<NavigatorState>(),
     );
   }
 
@@ -71,6 +76,7 @@ class _AppModuleState extends State<AppModule> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Estudo Auth",
+      navigatorKey: GetIt.I.get<GlobalKey<NavigatorState>>(),
       routes: routers,
       initialRoute: '/boas_vindas',
       localizationsDelegates: const [

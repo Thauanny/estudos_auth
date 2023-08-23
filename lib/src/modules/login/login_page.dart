@@ -22,14 +22,34 @@ class LoginPage extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 if (_formKey.currentState?.validate() ?? false) {
-                  auth.login(
+                  auth
+                      .login(
                     'akjdkasjdasdsd_asd.asdajsdhgasdgahsdgasdsd_asdjashdjsdsd.asdhgakjshgdahsdgasd_asdasdgsh',
-                  );
-
-                  Navigator.pushReplacementNamed(context, '/home');
+                  )
+                      .then((value) {
+                    if (value) {
+                      Navigator.pushReplacementNamed(context, '/home');
+                    }
+                  });
                 }
               },
               child: const Text('Login'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                auth
+                    .loginWithSSO(
+                  loadingWidget: const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                )
+                    .then((value) {
+                  if (value) {
+                    Navigator.pushReplacementNamed(context, '/home');
+                  }
+                });
+              },
+              child: const Text('Login SSO'),
             ),
             ElevatedButton(
               onPressed: () {

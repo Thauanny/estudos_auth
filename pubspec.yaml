@@ -43,6 +43,7 @@ dependencies:
   intl: ^0.17.0
   flutter_secure_storage: ^8.0.0
   google_sign_in: ^6.1.4
+  aad_oauth: ^0.4.4
   
 dev_dependencies:
   flutter_test:
