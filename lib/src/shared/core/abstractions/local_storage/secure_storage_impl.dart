@@ -1,5 +1,5 @@
-import 'package:estudo_auth/src/shared/core/abstractions/auth/key_type.dart';
-import 'package:estudo_auth/src/shared/core/abstractions/auth/secure_storage.dart';
+import 'package:estudo_auth/src/shared/core/abstractions/local_storage/key_type.dart';
+import 'package:estudo_auth/src/shared/core/abstractions/local_storage/secure_storage.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class SecureStorageImpl implements SecureStorage {

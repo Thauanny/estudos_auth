@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:estudo_auth/src/shared/core/abstractions/auth/impl/secure_storage_impl.dart';
-import 'package:estudo_auth/src/shared/core/abstractions/auth/secure_storage.dart';
+import 'package:estudo_auth/src/shared/core/abstractions/auth/authorization.dart';
+import 'package:estudo_auth/src/shared/core/abstractions/local_storage/secure_storage.dart';
+import 'package:estudo_auth/src/shared/core/abstractions/local_storage/secure_storage_impl.dart';
 import 'package:flutter/material.dart';
 import 'package:estudo_auth/src/shared/core/abstractions/client_http/cliente_http.dart';
 import 'package:estudo_auth/src/shared/core/abstractions/client_http/cliente_http_impl.dart';
@@ -28,6 +29,7 @@ class AppModule extends StatefulWidget {
         envLaunch.isEmpty ? env : envLaunch,
       ),
     );
+
     GetIt.I.registerSingleton<SecureStorage>(
       SecureStorageImpl(
         const FlutterSecureStorage(
@@ -36,6 +38,9 @@ class AppModule extends StatefulWidget {
           ),
         ),
       ),
+    );
+    GetIt.I.registerSingleton<AuthotorizationImpl>(
+      AuthotorizationImpl(GetIt.I.get<SecureStorage>()),
     );
     GetIt.I.registerSingleton<ClientHttp>(
       ClienteHttpImpl(

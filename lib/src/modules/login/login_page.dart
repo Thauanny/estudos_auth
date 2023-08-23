@@ -1,5 +1,4 @@
-import 'package:estudo_auth/src/shared/core/abstractions/auth/key_type.dart';
-import 'package:estudo_auth/src/shared/core/abstractions/auth/secure_storage.dart';
+import 'package:estudo_auth/src/shared/core/abstractions/auth/authorization.dart';
 import 'package:estudo_auth/src/shared/helpers/extensions/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -12,24 +11,37 @@ class LoginPage extends StatelessWidget {
     final _formKey = GlobalKey<FormState>();
     final _emailController = TextEditingController();
     final _passwordController = TextEditingController();
-    final localStorage = GetIt.I.get<SecureStorage>();
+    final auth = GetIt.I.get<AuthotorizationImpl>();
 
     return Scaffold(
-      bottomNavigationBar: Padding(
+      floatingActionButton: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 32.0),
-        child: ElevatedButton(
-          onPressed: () {
-            if (_formKey.currentState?.validate() ?? false) {
-              localStorage.save(
-                key: KeyType.accesstoken,
-                value:
-                    'asdh_jaskjdaksjdhasjd.ajsd_hajsdsadasd.asdasd_fasfsdsdd',
-              );
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                if (_formKey.currentState?.validate() ?? false) {
+                  auth.login(
+                    'akjdkasjdasdsd_asd.asdajsdhgasdgahsdgasdsd_asdjashdjsdsd.asdhgakjshgdahsdgasd_asdasdgsh',
+                  );
 
-              Navigator.pushReplacementNamed(context, '/home');
-            }
-          },
-          child: const Text('Login'),
+                  Navigator.pushReplacementNamed(context, '/home');
+                }
+              },
+              child: const Text('Login'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                auth.loginWithGoogle().then((value) {
+                  if (value) {
+                    Navigator.pushReplacementNamed(context, '/home');
+                  }
+                });
+              },
+              child: Text('Login with Google'),
+            ),
+          ],
         ),
       ),
       body: Center(

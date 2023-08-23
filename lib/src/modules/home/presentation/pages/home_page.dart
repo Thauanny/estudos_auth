@@ -1,5 +1,4 @@
-import 'package:estudo_auth/src/shared/core/abstractions/auth/key_type.dart';
-import 'package:estudo_auth/src/shared/core/abstractions/auth/secure_storage.dart';
+import 'package:estudo_auth/src/shared/core/abstractions/auth/authorization.dart';
 import 'package:estudo_auth/src/shared/core/environment/routers/restore_route.dart';
 import 'package:flutter/material.dart';
 import 'package:estudo_auth/src/modules/home/domain/repository/home_repository.dart';
@@ -15,12 +14,12 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends HomeModule<MyHomePage> {
   late final HomeRepository homeRepository;
-  late final SecureStorage localStorage;
+  late final AuthotorizationImpl auth;
   @override
   void initState() {
     super.initState();
     homeRepository = GetIt.I.get<HomeRepository>();
-    localStorage = GetIt.I.get<SecureStorage>();
+    auth = GetIt.I.get<AuthotorizationImpl>();
   }
 
   @override
@@ -36,7 +35,7 @@ class _MyHomePageState extends HomeModule<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          localStorage.remove(KeyType.accesstoken);
+          auth.logOut();
           restoreRoute(context: context, initialRouteName: '/boas_vindas');
         },
         tooltip: 'Deslogar',
