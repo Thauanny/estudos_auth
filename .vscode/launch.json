@@ -1,0 +1,60 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "estudo_auth - local",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "console": "debugConsole",
+            "args": [
+                "--dart-define=ENV_LAUNCH=local"
+            ],
+        },
+        {
+            "name": "estudo_auth - remote",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "console": "debugConsole",
+            "args": [
+                "--dart-define-from-file=env.json"
+            ],
+        },
+        {
+            "name": "estudo_auth - remote - release",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "console": "debugConsole",
+            "args": [
+                "--dart-define-from-file=env.json"
+            ],
+            "flutterMode": "release"
+        },
+        {
+            "name": "estudo_auth - local release",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "console": "debugConsole",
+            "args": [
+                "--dart-define=ENV_LAUNCH=local"
+            ],
+            "flutterMode": "release"
+        },
+
+        {
+            "name": "view - example",
+            "request": "launch",
+            "type": "dart",
+            "program": "view-archi/view_example/example/lib/main.dart",
+            "console": "debugConsole",
+
+        }
+    ]
+    
+}

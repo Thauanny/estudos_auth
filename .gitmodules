@@ -1,0 +1,3 @@
+[submodule "view-archi"]
+	path = view-archi
+	url = https://github.com/Thauanny/view-archi.git
